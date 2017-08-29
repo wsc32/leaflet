@@ -1,0 +1,21 @@
+---
+title: "Leaflet Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 29 August 2017
+```{r, echo=FALSE}
+library(leaflet)
+places_of_interest <- data.frame(lat=c(48.8584,48.8606),lng=c(2.2945,2.3376),col=c("red","blue"))
+placesSites <- c("<a href='http://www.toureiffel.paris/en'> Eiffel Tower Website</a>",
+                 "<a href='http://www.louvre.fr/en'> Louvre Museum Website</a>")
+places_of_interest %>%
+        leaflet() %>%
+        addTiles() %>% 
+        addCircleMarkers(color=places_of_interest$col, popup=placesSites) %>%
+        addLegend(labels=c("Eiffel Tower","Louvre Museum"),colors=c("red","blue"))
+```
